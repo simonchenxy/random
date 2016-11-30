@@ -2,15 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <style>
         #num{
             font-size: 24px;
             line-height: 30px;
             height:30px;
+            margin-top: 100px;
         }
         #test{
             padding:5px 15px;
+        }
+
+        @media screen and (max-width: 768px){
+        	#num{
+        		width: 80%;
+        		margin: 100px auto 0;
+        		font-size: 100%;
+        		border: 1px solid #76c7ef;
+        		padding-left: 10px;
+        	}
+        	#test{
+    		    width: 60%;
+			    margin: 20px auto 0;
+			    display: block;
+			    background: #76c7ef;
+			    border: 0;
+			    border-radius: 4px;
+			    color: #fff;
+			    font-size: 16px;
+        	}
         }
     </style>
 </head>
