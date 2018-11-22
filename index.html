@@ -10,7 +10,6 @@
         * {
             box-sizing: border-box;
         }
-
         #input {
             border: 2px solid #59c8f3;
             width: 100%;
@@ -22,7 +21,6 @@
             font-size: 22px;
             background: white;
         }
-
         #start,
         #stop,
         #reset {
@@ -37,7 +35,6 @@
             line-height: 40px;
             outline: none;
         }
-
         .btn {
             display: flex;
             justify-content: space-between;
@@ -46,7 +43,7 @@
 </head>
 
 <body>
-    <textarea id="input"></textarea>
+    <textarea id="input" placeholder="输入抓阄内容，以逗号、句号、空格分隔 ^_^"></textarea>
     <div class="btn">
         <button id="start" onclick="startRun()">开始</button>
         <button id="stop" onclick="stopRun()">结束</button>
