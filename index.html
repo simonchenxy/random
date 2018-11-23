@@ -71,8 +71,10 @@
     <script>
         var start = document.getElementById("start");
         var stop = document.getElementById("stop");
+        var reset = document.getElementById("reset");
         var result = document.getElementById("result");
-        var input, intv;
+        var input;
+        var intv;
         var count = 0;
         var dataArr = [];
         var disabledColor = '#a5a5a5';
@@ -80,13 +82,13 @@
             input = document.getElementById("input");
             var inputData = input.value.replace(/\,|\.|\，|\。/g, ' ');
             var formatData = inputData.split(' ');
-            formatData.forEach(element => {
-                if (element !== '') {
-                    dataArr.push(element);
+            for (var i = 0; i < formatData.length; i++) {
+                if (formatData[i] !== '') {
+                    dataArr.push(formatData[i]);
                 }
-            });
+            };
             if (count < 1 && input.value !== '') {
-                intv = setInterval(() => {
+                intv = setInterval(function () {
                     result.innerText = dataArr[Math.floor(Math.random() * dataArr.length)];
                 }, 10);
                 start.setAttribute('disabled', 'true');
