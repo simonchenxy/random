@@ -10,6 +10,13 @@
         * {
             box-sizing: border-box;
         }
+
+        .result-item {
+            position: relative;
+            height: 300px;
+        }
+
+        #result,
         #input {
             border: 2px solid #59c8f3;
             width: 100%;
@@ -20,7 +27,15 @@
             outline: none;
             font-size: 22px;
             background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
+
+        #result {
+            display: none;
+        }
+
         #start,
         #stop,
         #reset {
@@ -35,6 +50,7 @@
             line-height: 40px;
             outline: none;
         }
+
         .btn {
             display: flex;
             justify-content: space-between;
@@ -43,35 +59,41 @@
 </head>
 
 <body>
-    <textarea id="input" placeholder="输入抓阄内容，以逗号、句号、空格分隔 ^_^"></textarea>
+    <div class="result-item">
+        <textarea id="input" placeholder="输入抓阄内容，以逗号、句号、空格分隔 ^_^"></textarea>
+        <div id="result"></div>
+    </div>
     <div class="btn">
         <button id="start" onclick="startRun()">开始</button>
         <button id="stop" onclick="stopRun()">结束</button>
         <button id="reset" onclick="resetRun()">重置</button>
     </div>
-    <div id="num"></div>
     <script>
         const start = document.getElementById("start");
         const stop = document.getElementById("stop");
+        const result = document.getElementById("result");
+        let input;
         let intv;
         let count = 0;
         let dataArr = [];
         const disabledColor = '#a5a5a5';
         const startRun = function () {
-            let input = document.getElementById("input").value;
-            const inputData = input.replace(/\,|\.|\，|\。/g, ' ');
+            input = document.getElementById("input");
+            const inputData = input.value.replace(/\,|\.|\，|\。/g, ' ');
             const formatData = inputData.split(' ');
             formatData.forEach(element => {
                 if (element !== '') {
                     dataArr.push(element);
                 }
             });
-            if (count < 1 && input !== '') {
+            if (count < 1 && input.value !== '') {
                 intv = setInterval(() => {
-                    document.getElementById("input").value = dataArr[Math.floor(Math.random() * dataArr.length)];
+                    result.innerText = dataArr[Math.floor(Math.random() * dataArr.length)];
                 }, 10);
                 start.setAttribute('disabled', 'true');
                 start.style.backgroundColor = disabledColor;
+                input.style.display = 'none';
+                result.style.display = 'block';
                 count += 1;
             } else {
                 alert('至少输入一个哦 ^_^')
@@ -88,11 +110,14 @@
         }
         const resetRun = function () {
             count = 0;
-            document.getElementById("input").value = '';
+            input.value = '';
+            result.innerHTML = '';
             start.removeAttribute('disabled');
             stop.removeAttribute('disabled');
             start.style.backgroundColor = '#59c8f3';
             stop.style.backgroundColor = '#59c8f3';
+            input.style.display = 'block';
+            result.style.display = 'none';
             dataArr = [];
         }
     </script>
