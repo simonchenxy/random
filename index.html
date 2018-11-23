@@ -69,18 +69,17 @@
         <button id="reset">重置</button>
     </div>
     <script>
-        const start = document.getElementById("start");
-        const stop = document.getElementById("stop");
-        const result = document.getElementById("result");
-        let input;
-        let intv;
-        let count = 0;
-        let dataArr = [];
-        const disabledColor = '#a5a5a5';
+        var start = document.getElementById("start");
+        var stop = document.getElementById("stop");
+        var result = document.getElementById("result");
+        var input, intv;
+        var count = 0;
+        var dataArr = [];
+        var disabledColor = '#a5a5a5';
         start.onclick = function () {
             input = document.getElementById("input");
-            const inputData = input.value.replace(/\,|\.|\，|\。/g, ' ');
-            const formatData = inputData.split(' ');
+            var inputData = input.value.replace(/\,|\.|\，|\。/g, ' ');
+            var formatData = inputData.split(' ');
             formatData.forEach(element => {
                 if (element !== '') {
                     dataArr.push(element);
