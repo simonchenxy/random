@@ -59,6 +59,15 @@
 </head>
 
 <body>
+    <div class="result-item">
+        <textarea id="input" placeholder="输入抓阄内容，以逗号、句号、空格分隔 ^_^"></textarea>
+        <div id="result"></div>
+    </div>
+    <div class="btn">
+        <button id="start" onclick="startRun()">开始</button>
+        <button id="stop" onclick="stopRun()">结束</button>
+        <button id="reset" onclick="resetRun()">重置</button>
+    </div>
     <script>
         const start = document.getElementById("start");
         const stop = document.getElementById("stop");
@@ -112,15 +121,6 @@
             dataArr = [];
         }
     </script>
-    <div class="result-item">
-        <textarea id="input" placeholder="输入抓阄内容，以逗号、句号、空格分隔 ^_^"></textarea>
-        <div id="result"></div>
-    </div>
-    <div class="btn">
-        <button id="start" onclick="startRun()">开始</button>
-        <button id="stop" onclick="stopRun()">结束</button>
-        <button id="reset" onclick="resetRun()">重置</button>
-    </div>
 </body>
 
 </html>
