@@ -64,9 +64,9 @@
         <div id="result"></div>
     </div>
     <div class="btn">
-        <button id="start" onclick="startRun()">开始</button>
-        <button id="stop" onclick="stopRun()">结束</button>
-        <button id="reset" onclick="resetRun()">重置</button>
+        <button id="start">开始</button>
+        <button id="stop">结束</button>
+        <button id="reset">重置</button>
     </div>
     <script>
         const start = document.getElementById("start");
@@ -77,7 +77,7 @@
         let count = 0;
         let dataArr = [];
         const disabledColor = '#a5a5a5';
-        const startRun = function () {
+        start.onclick = function () {
             input = document.getElementById("input");
             const inputData = input.value.replace(/\,|\.|\，|\。/g, ' ');
             const formatData = inputData.split(' ');
@@ -99,7 +99,7 @@
                 alert('至少输入一个哦 ^_^')
             }
         };
-        const stopRun = function () {
+        stop.onclick = function () {
             if (start.getAttribute('disabled')) {
                 clearInterval(intv);
                 stop.setAttribute('disabled', 'true');
@@ -108,7 +108,7 @@
                 alert('至少输入一个哦 ^_^')
             }
         }
-        const resetRun = function () {
+        reset.onclick = function () {
             count = 0;
             input.value = '';
             result.innerHTML = '';
