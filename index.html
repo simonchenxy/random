@@ -42,13 +42,21 @@
             width: 20%;
             margin: 20px auto 0;
             display: block;
-            background: #76c7ef;
             border: 0;
             border-radius: 4px;
             color: #fff;
             font-size: 16px;
             line-height: 40px;
             outline: none;
+        }
+
+        #start {
+            background: #76c7ef;
+        }
+
+        #stop,
+        #reset {
+            background: #a5a5a5;
         }
 
         .btn {
@@ -65,8 +73,8 @@
     </div>
     <div class="btn">
         <button id="start">开始</button>
-        <button id="stop">结束</button>
-        <button id="reset">重置</button>
+        <button id="stop" disabled>结束</button>
+        <button id="reset" disabled>重置</button>
     </div>
     <script>
         var start = document.getElementById("start");
@@ -78,12 +86,13 @@
         var count = 0;
         var dataArr = [];
         var disabledColor = '#a5a5a5';
+        var abledColor = '#76c7ef';
         start.onclick = function () {
             input = document.getElementById("input");
             var inputData = input.value.replace(/\,|\.|\，|\。/g, ' ');
             var formatData = inputData.split(' ');
             for (var i = 0; i < formatData.length; i++) {
-                if (formatData[i] !== '') {
+                if (dataArr.indexOf(formatData[i]) === -1 && formatData[i] !== '') {
                     dataArr.push(formatData[i]);
                 }
             };
@@ -93,6 +102,10 @@
                 }, 10);
                 start.setAttribute('disabled', 'true');
                 start.style.backgroundColor = disabledColor;
+                stop.removeAttribute('disabled');
+                stop.style.backgroundColor = abledColor;
+                reset.removeAttribute('disabled');
+                reset.style.backgroundColor = abledColor;
                 input.style.display = 'none';
                 result.style.display = 'block';
                 count += 1;
@@ -105,21 +118,23 @@
                 clearInterval(intv);
                 stop.setAttribute('disabled', 'true');
                 stop.style.backgroundColor = disabledColor;
-            } else {
-                alert('至少输入一个哦 ^_^')
             }
         }
         reset.onclick = function () {
             count = 0;
+            clearInterval(intv);
             input.value = '';
             result.innerHTML = '';
             start.removeAttribute('disabled');
-            stop.removeAttribute('disabled');
-            start.style.backgroundColor = '#59c8f3';
-            stop.style.backgroundColor = '#59c8f3';
+            start.style.backgroundColor = abledColor;
+            stop.setAttribute('disabled', 'true');
+            stop.style.backgroundColor = disabledColor;
+            reset.setAttribute('disabled', 'true');
+            reset.style.backgroundColor = disabledColor;
             input.style.display = 'block';
             result.style.display = 'none';
             dataArr = [];
+            
         }
     </script>
 </body>
